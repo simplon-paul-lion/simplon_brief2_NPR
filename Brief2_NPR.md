@@ -65,7 +65,7 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
   3. création de la VM admin selon spécification ci-dessus 
   4. création de la VM BDD selon spécification ci-dessus avec déployement Postgresql
   5. création de la VM NextCloud selon spécification ci-dessus, installation Apache v 2.4, installation Nextcloud
-  6. 
+  6. mise en place des règles de routage ( HTTP par le port 1080, SSH part le port 1022)
  
   
     
