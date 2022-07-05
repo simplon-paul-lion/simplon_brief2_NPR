@@ -26,4 +26,22 @@ Elle sert de rebond pour pouvoir : administrer les 2 autres VM, rendre accessibl
   |CPU| 2 | |
   | RAM | 8 Go | |
   | Filesystem| ext4 | |
+  
+  ### VM Nextcloud  
+  ||LifeNC-grp2||
+  |---|---|-------|
+  | OS |Débian 11 "bullseye"|
+  |HDD| 30 Go| |
+  |CPU| 2 | |
+  | RAM | 8 Go | |
+  | Filesystem| ext4 | |
+  
+  ### VM SGBDR  
+  ||LifeBDD||
+  |---|---|-------|
+  | OS |Débian 11 "bullseye"|
+  |HDD| 30 Go| |
+  |CPU| 2 | |
+  | RAM | 8 Go | |
+  | Filesystem| ext4 | |
     
