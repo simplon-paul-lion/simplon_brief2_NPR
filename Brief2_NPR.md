@@ -11,7 +11,7 @@ Elle sert de rebond pour pouvoir : administrer les 2 autres VM, rendre accessibl
 
   ## Topologie réseau  
 
-  ![Topologie](Plan réseau.png)
+  ![Topologie](plan_reseau.png)
   
   ## table d'adressage ip  
   |nom de la VM|ip privée|ip public| Fonction |
