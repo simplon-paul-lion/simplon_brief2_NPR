@@ -13,7 +13,7 @@ Elle sert de rebond pour pouvoir : administrer les 2 autres VM, rendre accessibl
   |nom de la VM|ip privée|ip public| Fonction |
   |------------|---------|---------|----------|
   |Ls-grp2-admin| 10.0.2.10| 20.231.84.180 | Administration |
-  |LifeNC-grp2 | 10.0.2.11 |  --- | NextCloud |
+  |LifeNC-grp2 | 10.0.2.11 |  20.106.150.0 | NextCloud |
   |LifeBDD | 10.0.2.12 | ---- | SGBDR |
     
   |Passerelle | ip privée | DNS |
