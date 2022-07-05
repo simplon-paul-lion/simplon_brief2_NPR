@@ -21,6 +21,7 @@ Elle sert de rebond pour pouvoir : administrer les 2 autres VM, rendre accessibl
   | fournit par azure| 10.0.2.1| 168.63.129.16|
   
   ## les VM
+  ( vérifier le thin provisionning de AZURE STACK HCI)
   ### VM administration  
   ||Ls-grp2-admin||
   |---|---|-------|
@@ -50,4 +51,13 @@ Elle sert de rebond pour pouvoir : administrer les 2 autres VM, rendre accessibl
   | RAM | 8 Go | |
   | Filesystem| ext4 | |
   | soft 1| Postgresql | SGBR |
+  
+  ## Liste des ressources AZURE  
+  1. créer le groupe de ressource  
+  2. créer le réseau virtuel
+   2.1 définir la plage d'adressage selon le réseau 10.0.2.0/24 ( ne pas oublier de supprimer la plage d'adressage par défaut de AZURE pour éviter le cheveauchement)
+  3. création de la VM admin selon spécification ci-dessus 
+  4. création de la VM BDD selon spécification ci-dessus avec déployement Postgresql
+  5. création de la VM NextCloud selon spécification ci-dessus, installation Apache v 2.4, installation Nextcloud
+ 
     
