@@ -10,8 +10,7 @@ Elle sert de rebond pour pouvoir : administrer les 2 autres VM, rendre accessibl
 # Description des éléments de l'infrastructure  
 
   ## Topologie réseau  
- 
- https://github.com/simplon-paul-lion/simplon_brief2_NPR/upload/main
+
   
   ## table d'adressage ip  
   |nom de la VM|ip privée|ip public| Fonction |
