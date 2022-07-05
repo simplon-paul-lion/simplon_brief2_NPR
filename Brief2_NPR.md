@@ -38,6 +38,8 @@ Elle sert de rebond pour pouvoir : administrer les 2 autres VM, rendre accessibl
   |CPU| 2 | |
   | RAM | 8 Go | |
   | Filesystem| ext4 | |
+  | soft 1 | Apache V 2.4 | serveur web |
+  | soft 2| NextCloud | |
   
   ### VM SGBDR  
   ||LifeBDD||
@@ -47,4 +49,5 @@ Elle sert de rebond pour pouvoir : administrer les 2 autres VM, rendre accessibl
   |CPU| 2 | |
   | RAM | 8 Go | |
   | Filesystem| ext4 | |
+  | soft 1| Postgresql | SGBR |
     
