@@ -7,6 +7,8 @@ Elle sert de rebond pour pouvoir : administrer les 2 autres VM, rendre accessibl
 2. VM applicative : elle héberge la'application "Nextcloud", elle est reliée à la VM qui héberge le serveur base de données.
 3. La VM Base de données : elle distribue son service à destination de la VM applicative.  
 
+L'infrastructure sera déployé sur le réseau 10.0.2.0/24
+
 # Description des éléments de l'infrastructure  
 
   ## Topologie réseau  
