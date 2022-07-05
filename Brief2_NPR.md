@@ -19,7 +19,7 @@ Elle sert de rebond pour pouvoir : administrer les 2 autres VM, rendre accessibl
   
   ## les VM
   ### VM administration  
-  |||Ls-grp2-admin|
+  |Ls-grp2-admin|
   |---|---|-------|
   | OS |Débian 11 "bullseye"|
     
