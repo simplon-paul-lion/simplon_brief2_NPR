@@ -13,7 +13,7 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 
   ## Topologie réseau  
 
-  [![Topologie](plan_reseau.png)]
+ https://github.com/simplon-paul-lion/simplon_brief2_NPR/blob/main/Plan%20r%C3%A9seau.png [![Topologie](plan_reseau.png)]
   
   
   ## table d'adressage ip  
