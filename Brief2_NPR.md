@@ -8,6 +8,10 @@ Elle sert de rebond pour pouvoir : administrer les 2 autres VM, rendre accessibl
 3. La VM Base de données : elle distribue son service à destination de la VM applicative.  
 
 # Description des éléments de l'infrastructure  
+
+  ## Topologie réseau  
+ 
+ https://github.com/simplon-paul-lion/simplon_brief2_NPR/upload/main
   
   ## table d'adressage ip  
   |nom de la VM|ip privée|ip public| Fonction |
@@ -59,5 +63,7 @@ Elle sert de rebond pour pouvoir : administrer les 2 autres VM, rendre accessibl
   3. création de la VM admin selon spécification ci-dessus 
   4. création de la VM BDD selon spécification ci-dessus avec déployement Postgresql
   5. création de la VM NextCloud selon spécification ci-dessus, installation Apache v 2.4, installation Nextcloud
+  6. 
  
+  
     
