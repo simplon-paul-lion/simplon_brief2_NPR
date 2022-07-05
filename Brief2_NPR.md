@@ -4,7 +4,7 @@
 L'infrastructure doit être composée de trois VM.  
 1. VM d'administration qui doit être la seule accessile depuis l'extérieur.  
 Elle sert de rebond pour pouvoir : administrer les 2 autres VM, rendre accessible l'application hébergée sur la VM applicative.
-2. VM applicative : elle héberge la'application "Nextcloud", elle est reliée à la VM qui héberge le serveur base de données.
+2. VM applicative : elle héberge l'application "Nextcloud", elle est reliée à la VM qui héberge le serveur base de données.
 3. La VM Base de données : elle distribue son service à destination de la VM applicative.  
 
 L'infrastructure sera déployé sur le réseau 10.0.2.0/24
