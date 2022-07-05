@@ -13,7 +13,8 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 
   ## Topologie réseau  
 
-  ![Topologie](plan_reseau.png)
+  [![Topologie](plan_reseau.png)]
+  
   
   ## table d'adressage ip  
   |nom de la VM|ip privée|ip public| Fonction |
