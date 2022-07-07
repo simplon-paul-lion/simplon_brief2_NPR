@@ -22,12 +22,8 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 
   ## Topologie réseau  
 
-<<<<<<< HEAD
-  ![Topologie](plan_reseau.png)
-=======
-![Topologie](plan_reseau.png.png)
+![Topologie](plan_reseau.png)
 
->>>>>>> 83826e486392df083ba377ebe841f481b8793e2d
   
   ## table d'adressage ip  
   |nom de la VM|ip privée|ip public| Fonction |
