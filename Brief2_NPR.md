@@ -2,10 +2,19 @@
 
 # Présentation de l'infrastructure  
 L'infrastructure doit être composée de trois VM.  
+<<<<<<< HEAD
 1. VM d'administration qui doit être accessile depuis l'extérieur.  
 Elle sert de rebond pour pouvoir : administrer les 2 autres VM.
 1. VM applicative : elle héberge l'application "Nextcloud", elle est reliée à la VM qui héberge le serveur base de données. 
 2. La VM Base de données : elle distribue son service à destination de la VM applicative.  
+=======
+1. VM d'administration qui doit être la seule accessible depuis l'extérieur.  
+Elle sert de rebond pour pouvoir : administrer les 2 autres VM, rendre accessible l'application hébergée sur la VM applicative.
+2. VM applicative : elle héberge l'application "Nextcloud", elle est reliée à la VM qui héberge le serveur base de données.
+3. La VM Base de données : elle distribue son service à destination de la VM applicative.  
+>>>>>>> 83826e486392df083ba377ebe841f481b8793e2d
+
+L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 
 # Description des éléments de l'infrastructure  
 
@@ -13,7 +22,12 @@ Elle sert de rebond pour pouvoir : administrer les 2 autres VM.
 
   ## Topologie réseau  
 
+<<<<<<< HEAD
   ![Topologie](plan_reseau.png)
+=======
+![Topologie](plan_reseau.png.png)
+
+>>>>>>> 83826e486392df083ba377ebe841f481b8793e2d
   
   ## table d'adressage ip  
   |nom de la VM|ip privée|ip public| Fonction |
@@ -65,7 +79,7 @@ Elle sert de rebond pour pouvoir : administrer les 2 autres VM.
   3. création de la VM admin selon spécification ci-dessus 
   4. création de la VM BDD selon spécification ci-dessus avec déployement Postgresql
   5. création de la VM NextCloud selon spécification ci-dessus, installation Apache v 2.4, installation Nextcloud
-  6. 
+  6. mise en place des règles de routage ( HTTP par le port 1080, SSH part le port 1022)
  
   
     
