@@ -1,5 +1,4 @@
 
-# test
 # Présentation de l'infrastructure  
 L'infrastructure doit être composée de trois VM. Elle sera déployé en utilisant la solution AZURE CLOUD  
 1. VM d'administration qui doit être accessile depuis l'extérieur.  
