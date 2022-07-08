@@ -1,5 +1,5 @@
 
-
+# test
 # Présentation de l'infrastructure  
 L'infrastructure doit être composée de trois VM. Elle sera déployé en utilisant la solution AZURE CLOUD  
 1. VM d'administration qui doit être accessile depuis l'extérieur.  
@@ -21,7 +21,7 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
   ## table d'adressage ip  
   |nom de la VM|ip privée|ip public| Fonction |
   |------------|---------|---------|----------|
-  |Ls-grp2-admin| 10.0.2.10| 20.231.84.180 | Administration |
+  |Ls2-admin| 10.0.2.10| 20.231.84.180 | Administration |
   |LifeNC-grp2 | 10.0.2.11 |  20.106.150.0 | NextCloud |
   |LifeBDD | 10.0.2.12 | ---- | SGBDR |
     
