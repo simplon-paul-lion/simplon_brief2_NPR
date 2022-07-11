@@ -97,7 +97,8 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 ### a) Installation d'Apache
 `sudo apt-get install apache2`
 Changer le port d'écoute en 8080 : `vim /etc/apache2/ports.conf`  
-Dans vim, modofier la ligne : `Listen 80`en `Listen 8080`
+Dans vim, modofier la ligne : `Listen 80` en `Listen 8080`  
+Aller sur Azure et changer le port http 80 par 8080 en cliquant sur `mise en réseau > custom`
 
 ### b) Installation de PHP
 `sudo apt -y install php php-common php-zip php-gd php-mbstring php-curl php-xml php-pgsql`
