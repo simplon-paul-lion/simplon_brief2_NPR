@@ -84,7 +84,8 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 
 ### a) Installation de PostgreSQL
 `sudo apt update`
-`sudo apt install postgresql postgresql-contrib`
+`sudo apt install postgresql postgresql-contrib`  
+Modifier deux fichiers 
 
 ### b) Création de l'utilisateur "nextcloud"
 `sudo su - postgres psql`   
@@ -116,7 +117,7 @@ Renommer le nouveau dossier `nextcloud` en `html` avec la commande `mv nextcloud
 * 6 - Modifier le trust domain : dans le tableau mettre `0=> '20.120.12.97:8080`  
 * 7 - Redémarrer apache : `systemctl restart apache2` puis vérifier qu'apache est actif `systemctl status apache2`
  
-configuration des ports et autorisations réseau  
+ autorisations réseau  
 pghba liste des users et quelle ip  
 postgres.conf * 0.0.0.0 
  
