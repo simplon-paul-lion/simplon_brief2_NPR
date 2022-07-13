@@ -14,8 +14,8 @@ d) VM administration
 e) VM netxcloud
 f) VM SGBDR
 g) Liste des ressources AZURE
-##### [3 - Création des clés SSH]
-##### 4 - Installation paramétrages
+##### [3 - Création des clés SSH](#SSH)
+##### [4 - Installation paramétrages](#Paramétrages)
 4-1 - Installation de `ls2-admin`
 4-2 - Installation de `ls2-BDD`
 a) Installation de PostgreSQL
@@ -24,8 +24,8 @@ b) Création de l'utilisateur "nextcloud"
 a) Installation d'Apache
 b) Installation de PHP
 c) Installation de Nextcloud
-##### 5 - Création d'un FQDN
-##### *Bonus : installation de TLS*
+##### [5 - Création d'un FQDN](#FQDN)
+##### [*Bonus : installation de TLS*](#TLS)
 
 ___
 <div id='Structure'/>
