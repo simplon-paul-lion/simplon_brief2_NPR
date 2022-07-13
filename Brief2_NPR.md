@@ -39,6 +39,8 @@ Elle sert de rebond pour pouvoir : administrer les 2 autres VM.
 
 L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 
+[&#8679;](#top) 
+
 <div id='Description'/>
 
 ## 2- Description des éléments de l'infrastructure  
@@ -101,12 +103,16 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
   5. création de la VM NextCloud selon spécification ci-dessus, installation Apache v 2.4, installation Nextcloud
   6. mise en place des règles de routage ( HTTP par le port 1080, SSH part le port 1022)
 
+[&#8679;](#top) 
+
 <div id='SSH'>
 
  ## 3 - Création des clés SSH   
  Lancer Windows PowerShell et taper la commande :  
  `sudo ssh-keygen`  
  Enregistrer la clé dans un sous-dossier du répertoire utilisateur nommé `.ssh`
+
+[&#8679;](#top) 
 
 <div id='Paramétrages'>
 
@@ -117,6 +123,8 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 Ajouter sa clé publique sur la machine virtuelle
 `ssh-copy-id grp2@20.25.9.8`
 
+[&#8679;](#top) 
+
 ### 4.2 - Installation de `ls2-BDD`
 
 #### a) Installation de PostgreSQL
@@ -124,11 +132,15 @@ Ajouter sa clé publique sur la machine virtuelle
 `sudo apt install postgresql postgresql-contrib`  
 Modifier deux fichiers 
 
+[&#8679;](#top) 
+
 #### b) Création de l'utilisateur "nextcloud"
 `sudo su - postgres psql`   
 `postgres=> ALTER ROLE nextcloud WITH PASSWORD Lifesense123;`  
 `postgres=> CREATE DATABASE nextclouddb;`  
 `postgres=> GANT ALL PRIVILEGES ON DATABASE nextclouddb TO nextcloud;` 
+
+[&#8679;](#top) 
 
 ### 4.3 - Installation de `l2-NC`
 
@@ -141,10 +153,14 @@ Dans vim, modifier la ligne : `Listen 80` en `Listen 8080`
 
 Aller sur Azure et changer le port http 80 par 8080 en cliquant sur `mise en réseau > custom`
 
+[&#8679;](#top) 
+
 #### b) Installation de PHP
 `sudo apt -y install php php-common php-zip php-gd php-mbstring php-curl php-xml php-pgsql`
 
 `sudo systemctl restart apache2`
+
+[&#8679;](#top) 
 
 #### c) Installation de Nextcloud
 * 1 -  Supprimer le dossier `/var/www/html`  
@@ -157,9 +173,21 @@ Renommer le nouveau dossier `nextcloud` en `html` avec la commande `mv nextcloud
 * 6 - Modifier le trust domain : dans le tableau mettre `0=> '20.120.12.97:8080`  
 * 7 - Redémarrer apache : `systemctl restart apache2` puis vérifier qu'apache est actif `systemctl status apache2`
  
+ [&#8679;](#top) 
+
  <div id='FQDN'>
 
 ### 5 - Création d'un FQDN
+
+* 1 - Aller dans Microsoft Azure et taper "FQDN" dans la barre de recherche.
+* 2 - Dans Microsoft Azure, aller sur la VM `ls2-admin`
+* 3 - Dans le menu de gauche, aller dans Propriétés
+* 4 - Séléctionner l'adresse IP sous Adresse IP publique\Etiquettes du nom DNS
+* 5 - Sous Étiquette du nom DNS, entrer le préfixe à utiliser
+* 6 - Sélectionner Enregistrer en haut de la page
+* 7 - dans le menu de gauche, sélectionner" Vue d’ensemble" pour revenir à la vue d’ensemble de la machine virtuelle
+* 8 - Vérifier que le nom DNS s’affiche correctement
+[&#8679;](#top) 
 
  <div id='TLS'>
 
@@ -174,15 +202,9 @@ Une fois connecté à la VM Nextcloud, nous avons utilisé les commandes suivant
 * 4 - Il faut ensuite changer le Trusted Domains  
 `vim /etc/www/var/html/config/config.php`
 
-### Création d'un FQDN
-* 1 - Aller dans Microsoft Azure et taper "FQDN" dans la barre de recherche.
-* 2 - Dans Microsoft Azure, aller sur la VM `ls2-admin`
-* 3 - Dans le menu de gauche, aller dans Propriétés
-* 4 - Séléctionner l'adresse IP sous Adresse IP publique\Etiquettes du nom DNS
-* 5 - Sous Étiquette du nom DNS, entrer le préfixe à utiliser
-* 6 - Sélectionner Enregistrer en haut de la page
-* 7 - dans le menu de gauche, sélectionner" Vue d’ensemble" pour revenir à la vue d’ensemble de la machine virtuelle
-* 8 - Vérifier que le nom DNS s’affiche correctement
+[&#8679;](#top) 
+
+
 
 autorisations réseau  
 pghba liste des users et quelle ip  
