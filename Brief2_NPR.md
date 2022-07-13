@@ -7,23 +7,23 @@ ___
 
 ##### [1 - Présentation de l'infrastructure](#Structure)
 ##### [2 - Description des éléments de l'infrastructure](#Description)
-&nbsp;&nbsp; &nbsp;   a) Topologie réseau
-&nbsp;&nbsp; &nbsp;   b) Table d'adressage ip
-&nbsp;&nbsp; &nbsp; c) Les Vm
-&nbsp;&nbsp; &nbsp; d) VM administration
-&nbsp;&nbsp; &nbsp; e) VM netxcloud
-&nbsp;&nbsp; &nbsp; f) VM SGBDR
+&nbsp;&nbsp; &nbsp; a) Topologie réseau  
+&nbsp;&nbsp; &nbsp; b) Table d'adressage ip  
+&nbsp;&nbsp; &nbsp; c) Les Vm  
+&nbsp;&nbsp; &nbsp; d) VM administration  
+&nbsp;&nbsp; &nbsp; e) VM netxcloud  
+&nbsp;&nbsp; &nbsp; f) VM SGBDR  
 &nbsp;&nbsp; &nbsp; g) Liste des ressources AZURE
 ##### [3 - Création des clés SSH](#SSH)
 ##### [4 - Installation paramétrages](#Paramétrages)
-&nbsp;4-1 - Installation de `ls2-admin`
-&nbsp;4-2 - Installation de `ls2-BDD`
-&nbsp;&nbsp; &nbsp; a) Installation de PostgreSQL
-&nbsp;&nbsp; &nbsp; b) Création de l'utilisateur "nextcloud"
-&nbsp;4-3 - Installation de `l2-NC`
-&nbsp;&nbsp; &nbsp; a) Installation d'Apache
-&nbsp;&nbsp; &nbsp; b) Installation de PHP
-&nbsp;&nbsp; &nbsp; c) Installation de Nextcloud
+&nbsp;4-1 - Installation de `ls2-admin`  
+&nbsp;4-2 - Installation de `ls2-BDD`  
+&nbsp;&nbsp; &nbsp; a) Installation de PostgreSQL  
+&nbsp;&nbsp; &nbsp; b) Création de l'utilisateur "nextcloud"  
+&nbsp;4-3 - Installation de `l2-NC`  
+&nbsp;&nbsp; &nbsp; a) Installation d'Apache  
+&nbsp;&nbsp; &nbsp; b) Installation de PHP  
+&nbsp;&nbsp; &nbsp; c) Installation de Nextcloud  
 ##### [5 - Création d'un FQDN](#FQDN)
 ##### [*Bonus : installation de TLS*](#TLS)
 
