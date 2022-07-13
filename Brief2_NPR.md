@@ -1,5 +1,32 @@
+### *Brief 2*
+Groupe 2 : Paul, Dunvael, Raja, Noa
+___
+## Sommaire :
+##### 1 - Présentation de la structure
+##### 2 - Description des éléments de l'infrastructure 
+a) Topologie réseau 
+b) Table d'adressage ip
+c) Les Vm
+d) VM administration
+e) VM netxcloud
+f) VM SGBDR
+g) Liste des ressources AZURE
+##### 3 - Création des clés SSH
+##### 4 - Installation paramétrages
+4-1 - Installation de `ls2-admin`
+4-2 - Installation de `ls2-BDD`
+a) Installation de PostgreSQL
+b) Création de l'utilisateur "nextcloud"
+4-3 - Installation de `l2-NC`
+a) Installation d'Apache
+b) Installation de PHP
+c) Installation de Nextcloud
+##### 5 - Création d'un FQDN
+##### *Bonus : installation de TLS*
 
-# 1- Présentation de l'infrastructure   
+___
+
+## 1- Présentation de l'infrastructure   
 L'infrastructure doit être composée de trois VM. Elle sera déployé en utilisant la solution AZURE CLOUD  
 1. VM d'administration qui doit être accessile depuis l'extérieur.  
 Elle sert de rebond pour pouvoir : administrer les 2 autres VM.
@@ -8,17 +35,17 @@ Elle sert de rebond pour pouvoir : administrer les 2 autres VM.
 
 L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 
-# 2- Description des éléments de l'infrastructure  
+## 2- Description des éléments de l'infrastructure  
 
   ## a) Topologie réseau  
 
 ![Topologie](plan_reseau.png)
 
   
-  ## b) table d'adressage ip  
+  ## b) Table d'adressage ip  
   |nom de la VM|ip privée|ip public| Fonction |
   |------------|---------|---------|----------|
-  |Ls2-admin| 10.0.2.10| 20.231.84.180 | Administration |
+  |Ls2-admin| 10.0.2.10| 20.232.191.71 | Administration |
   |LifeNC-grp2 | 10.0.2.11 |  20.106.150.0 | NextCloud |
   |LifeBDD | 10.0.2.12 | ---- | SGBDR |
     
@@ -26,7 +53,7 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
   |-----------|-----------|-----|
   | fournit par azure| 10.0.2.1| 168.63.129.16|
   
-  ## c) les VM
+  ## c) Les VM
   (vérifier le thin provisionning de AZURE STACK HCI)
 
   ### d) VM administration  
@@ -68,45 +95,48 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
   5. création de la VM NextCloud selon spécification ci-dessus, installation Apache v 2.4, installation Nextcloud
   6. mise en place des règles de routage ( HTTP par le port 1080, SSH part le port 1022)
 
- # 3- Création des clés ssh   
+ ## 3 - Création des clés SSH   
  Lancer Windows PowerShell et taper la commande :  
  `sudo ssh-keygen`  
  Enregistrer la clé dans un sous-dossier du répertoire utilisateur nommé `.ssh`
 
-# 4 - Installation paramétrages
+## 4 - Installation paramétrages
 
-## 4.1 - Installation de `ls2-admin`
+### 4.1 - Installation de `ls2-admin`
 
-### Ajouter sa clé publique sur la machine virtuelle
+Ajouter sa clé publique sur la machine virtuelle
 `ssh-copy-id grp2@20.25.9.8`
 
-## 4.2 - Installation de `ls2-BDD`
+### 4.2 - Installation de `ls2-BDD`
 
-### a) Installation de PostgreSQL
+#### a) Installation de PostgreSQL
 `sudo apt update`
 `sudo apt install postgresql postgresql-contrib`  
 Modifier deux fichiers 
 
-### b) Création de l'utilisateur "nextcloud"
+#### b) Création de l'utilisateur "nextcloud"
 `sudo su - postgres psql`   
 `postgres=> ALTER ROLE nextcloud WITH PASSWORD Lifesense123;`  
 `postgres=> CREATE DATABASE nextclouddb;`  
 `postgres=> GANT ALL PRIVILEGES ON DATABASE nextclouddb TO nextcloud;` 
 
-## 4.3 - Installation de `l2-NC`
+### 4.3 - Installation de `l2-NC`
 
-### a) Installation d'Apache
-`sudo apt-get install apache2`
-Changer le port d'écoute en 8080 : `vim /etc/apache2/ports.conf`  
-Dans vim, modofier la ligne : `Listen 80` en `Listen 8080`  
+#### a) Installation d'Apache
+`sudo apt-get install apache2`  
+
+Changer le port d'écoute en 8080 : `vim /etc/apache2/ports.conf`   
+
+Dans vim, modifier la ligne : `Listen 80` en `Listen 8080`   
+
 Aller sur Azure et changer le port http 80 par 8080 en cliquant sur `mise en réseau > custom`
 
-### b) Installation de PHP
+#### b) Installation de PHP
 `sudo apt -y install php php-common php-zip php-gd php-mbstring php-curl php-xml php-pgsql`
 
 `sudo systemctl restart apache2`
 
-### c) Installation de Nextcloud
+#### c) Installation de Nextcloud
 * 1 -  Supprimer le dossier `/var/www/html`  
 * 2 - Aller dans /var/www/ et y télécharger nextcloud 
 `apt-get https://download.nextcloud.com/server/releases/latest.tar.bz2`  
@@ -117,11 +147,32 @@ Renommer le nouveau dossier `nextcloud` en `html` avec la commande `mv nextcloud
 * 6 - Modifier le trust domain : dans le tableau mettre `0=> '20.120.12.97:8080`  
 * 7 - Redémarrer apache : `systemctl restart apache2` puis vérifier qu'apache est actif `systemctl status apache2`
  
- autorisations réseau  
+### *Bonus : installation de TLS*
+
+Une fois connecté à la VM Nextcloud, nous avons utilisé les commandes suivantes:  
+* 1 - Installation de Cerbot  
+`sudo apt install python3-certbot-apache -y`  
+* 2 - Création du certificat TLS `sudo certbot --apache --agree-tos --redirect --hsts --staple-ocsp -d lifesense2.eastus.cloudapp.azure.com` 
+* 3 - Cerbot doit automatiquement passer par le port 80  
+`vim /etc/apache2/config/ports.conf`
+* 4 - Il faut ensuite changer le Trusted Domains  
+`vim /etc/www/var/html/config/config.php`
+
+### Création d'un FQDN
+* 1 - Aller dans Microsoft Azure et taper "FQDN" dans la barre de recherche.
+* 2 - Dans Microsoft Azure, aller sur la VM `ls2-admin`
+* 3 - Dans le menu de gauche, aller dans Propriétés
+* 4 - Séléctionner l'adresse IP sous Adresse IP publique\Etiquettes du nom DNS
+* 5 - Sous Étiquette du nom DNS, entrer le préfixe à utiliser
+* 6 - Sélectionner Enregistrer en haut de la page
+* 7 - dans le menu de gauche, sélectionner" Vue d’ensemble" pour revenir à la vue d’ensemble de la machine virtuelle
+* 8 - Vérifier que le nom DNS s’affiche correctement
+
+autorisations réseau  
 pghba liste des users et quelle ip  
 postgres.conf * 0.0.0.0 
  
- # Bonus  
- 
+  
+
  
     
