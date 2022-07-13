@@ -5,7 +5,7 @@ ___
 
 ## Sommaire :
 
-##### [1 - Présentation de la structure](#Structure)
+##### [1 - Présentation de l'infrastructure](#Structure)
 ##### [2 - Description des éléments de l'infrastructure](#Description)
 &nbsp;&nbsp; &nbsp;   a) Topologie réseau
 &nbsp;&nbsp; &nbsp;   b) Table d'adressage ip
