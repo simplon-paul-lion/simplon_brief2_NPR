@@ -6,7 +6,7 @@ ___
 ## Sommaire :
 
 ##### [1 - Présentation de la structure](#Structure)
-##### [2 - Description des éléments de l'infrastructure](#2---description-des-éléments-de-linfrastructure)
+##### [2 - Description des éléments de l'infrastructure](#Description)
 a) Topologie réseau
 b) Table d'adressage ip
 c) Les Vm
@@ -14,7 +14,7 @@ d) VM administration
 e) VM netxcloud
 f) VM SGBDR
 g) Liste des ressources AZURE
-##### [3 - Création des clés SSH](#3---création-des-clés-ssh)
+##### [3 - Création des clés SSH]
 ##### 4 - Installation paramétrages
 4-1 - Installation de `ls2-admin`
 4-2 - Installation de `ls2-BDD`
