@@ -1,8 +1,11 @@
 ### *Brief 2*
 Groupe 2 : Paul, Dunvael, Raja, Noa
 ___
+<div id='top'/>
+
 ## Sommaire :
-##### 1 - Présentation de la structure
+
+[1 - Présentation de la structure] (#Structure)
 ##### 2 - Description des éléments de l'infrastructure 
 a) Topologie réseau 
 b) Table d'adressage ip
@@ -25,6 +28,7 @@ c) Installation de Nextcloud
 ##### *Bonus : installation de TLS*
 
 ___
+<div id='Structure'/>
 
 ## 1- Présentation de l'infrastructure   
 L'infrastructure doit être composée de trois VM. Elle sera déployé en utilisant la solution AZURE CLOUD  
@@ -34,6 +38,8 @@ Elle sert de rebond pour pouvoir : administrer les 2 autres VM.
 2. La VM Base de données : elle distribue son service à destination de la VM applicative.  
 
 L'infrastructure sera déployé sur le réseau 10.0.2.0/24
+
+<div id='Description'/>
 
 ## 2- Description des éléments de l'infrastructure  
 
@@ -95,10 +101,14 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
   5. création de la VM NextCloud selon spécification ci-dessus, installation Apache v 2.4, installation Nextcloud
   6. mise en place des règles de routage ( HTTP par le port 1080, SSH part le port 1022)
 
+<div id='SSH'>
+
  ## 3 - Création des clés SSH   
  Lancer Windows PowerShell et taper la commande :  
  `sudo ssh-keygen`  
  Enregistrer la clé dans un sous-dossier du répertoire utilisateur nommé `.ssh`
+
+<div id='Paramétrages'>
 
 ## 4 - Installation paramétrages
 
@@ -147,6 +157,12 @@ Renommer le nouveau dossier `nextcloud` en `html` avec la commande `mv nextcloud
 * 6 - Modifier le trust domain : dans le tableau mettre `0=> '20.120.12.97:8080`  
 * 7 - Redémarrer apache : `systemctl restart apache2` puis vérifier qu'apache est actif `systemctl status apache2`
  
+ <div id='FQDN'>
+
+### 5 - Création d'un FQDN
+
+ <div id='TLS'>
+
 ### *Bonus : installation de TLS*
 
 Une fois connecté à la VM Nextcloud, nous avons utilisé les commandes suivantes:  
