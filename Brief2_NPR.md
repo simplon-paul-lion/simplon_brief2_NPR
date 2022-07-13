@@ -6,15 +6,15 @@ ___
 ## Sommaire :
 
 ##### [1 - Présentation de la structure](#Structure)
-##### 2 - Description des éléments de l'infrastructure 
-a) Topologie réseau 
+##### [2 - Description des éléments de l'infrastructure](#2---description-des-éléments-de-linfrastructure)
+a) Topologie réseau
 b) Table d'adressage ip
 c) Les Vm
 d) VM administration
 e) VM netxcloud
 f) VM SGBDR
 g) Liste des ressources AZURE
-##### 3 - Création des clés SSH
+##### [3 - Création des clés SSH](#3---création-des-clés-ssh)
 ##### 4 - Installation paramétrages
 4-1 - Installation de `ls2-admin`
 4-2 - Installation de `ls2-BDD`
@@ -187,6 +187,7 @@ Renommer le nouveau dossier `nextcloud` en `html` avec la commande `mv nextcloud
 * 6 - Sélectionner Enregistrer en haut de la page
 * 7 - dans le menu de gauche, sélectionner" Vue d’ensemble" pour revenir à la vue d’ensemble de la machine virtuelle
 * 8 - Vérifier que le nom DNS s’affiche correctement
+
 [&#8679;](#top) 
 
  <div id='TLS'>
