@@ -6,33 +6,34 @@ ___
 ## Sommaire :
 
 ##### [1 - Présentation de l'infrastructure](#Structure)
+
 ##### [2 - Description des éléments de l'infrastructure](#Description)
-&nbsp;&nbsp; &nbsp; a) Topologie réseau  
-&nbsp;&nbsp; &nbsp; b) Table d'adressage ip  
-&nbsp;&nbsp; &nbsp; c) Les Vm  
-&nbsp;&nbsp; &nbsp; d) VM administration  
-&nbsp;&nbsp; &nbsp; e) VM netxcloud  
-&nbsp;&nbsp; &nbsp; f) VM SGBDR  
-&nbsp;&nbsp; &nbsp; g) Liste des ressources AZURE
+&nbsp;&nbsp; &nbsp; *[a) Topologie réseau](#Réseau)*  
+&nbsp;&nbsp; &nbsp; *[b) Table d'adressage ip ](#Ip)* 
+&nbsp;&nbsp; &nbsp; *[c) Les Vm](#Vm)*
+&nbsp;&nbsp; &nbsp; *[d) VM administration](#administration)*  
+&nbsp;&nbsp; &nbsp; *[e) VM netxcloud](#nextcloud)*  
+&nbsp;&nbsp; &nbsp; *[f) VM SGBDR](#SGBDR)*  
+&nbsp;&nbsp; &nbsp; *[g) Liste des ressources](#ressources)*
 ##### [3 - Création des clés SSH](#SSH)
 ##### [4 - Installation paramétrages](#Paramétrages)
-&nbsp;4-1 - Installation de `ls2-admin`  
-&nbsp;4-2 - Installation de `ls2-BDD`  
-&nbsp;&nbsp; &nbsp; a) Installation de PostgreSQL  
-&nbsp;&nbsp; &nbsp; b) Création de l'utilisateur "nextcloud"  
-&nbsp;4-3 - Installation de `l2-NC`  
-&nbsp;&nbsp; &nbsp; a) Installation d'Apache  
-&nbsp;&nbsp; &nbsp; b) Installation de PHP  
-&nbsp;&nbsp; &nbsp; c) Installation de Nextcloud  
+&nbsp;*[4-1 - Installation de ls2-admin](#ls2admin)*  
+&nbsp;*[4-2 - Installation de ls2-BDD](#ls2-BDD)*  
+&nbsp;&nbsp; &nbsp; *[a) Installation de PostgreSQL](#PostgreSQL)* 
+&nbsp;&nbsp; &nbsp; *[b) Création de l'utilisateur "nextcloud"](#netcloud)*  
+&nbsp;*[4-3 - Installation de ls2-NC](#ls2-NC)*
+&nbsp;&nbsp; &nbsp; *[a) Installation d'Apache2](#APACHE2)*  
+&nbsp;&nbsp; &nbsp; *[b) Installation de PHP](#PHP)* 
+&nbsp;&nbsp; &nbsp; *[c) Installation de Nextcloud](#Nextcloud)*  
 ##### [5 - Création d'un FQDN](#FQDN)
 ##### [*Bonus : installation de TLS*](#TLS)
 
-___
+
 <div id='Structure'/>
 
 ## 1- Présentation de l'infrastructure   
 L'infrastructure doit être composée de trois VM. Elle sera déployé en utilisant la solution AZURE CLOUD  
-1. VM d'administration qui doit être accessile depuis l'extérieur.  
+1. VM d'administration qui doit être accessile depuis l'extérieur.
 Elle sert de rebond pour pouvoir : administrer les 2 autres VM.
 1. VM applicative : elle héberge l'application "Nextcloud", elle est reliée à la VM qui héberge le serveur base de données. 
 2. La VM Base de données : elle distribue son service à destination de la VM applicative.  
@@ -48,6 +49,12 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
   ## a) Topologie réseau  
 
 ![Topologie](plan_reseau.png)
+
+[&#8679;](#top)
+
+<div id='réseau'/>
+
+
 
   
   ## b) Table d'adressage ip  
@@ -95,15 +102,56 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
   | soft 1| Postgresql | SGBR |
   
   ## g) Liste des ressources AZURE  
-  1. créer le groupe de ressource  
-  2. créer le réseau virtuel
-   2.1 définir la plage d'adressage selon le réseau 10.0.2.0/24 ( ne pas oublier de supprimer la plage d'adressage par défaut de AZURE pour éviter le cheveauchement)
-  3. création de la VM admin selon spécification ci-dessus 
-  4. création de la VM BDD selon spécification ci-dessus avec déployement Postgresql
-  5. création de la VM NextCloud selon spécification ci-dessus, installation Apache v 2.4, installation Nextcloud
-  6. mise en place des règles de routage ( HTTP par le port 1080, SSH part le port 1022)
+  ### *1. Créer le groupe de ressource* 
 
-[&#8679;](#top) 
+<img width="472" alt="groupederessources" src="https://user-images.githubusercontent.com/108053084/178955829-a1d0f347-2da6-49a0-bcd4-f673ab1b91f1.png">
+
+---
+
+<img width="471" alt="groupederessource1" src="https://user-images.githubusercontent.com/108053084/178954810-b875bccd-d7e5-40b2-af6c-d5189f70cbce.png">
+
+---
+
+<img width="359" alt="groupederessources3" src="https://user-images.githubusercontent.com/108053084/178957968-4ea2aa74-6a34-4098-91de-a1ebc9ee8928.png">
+
+----
+
+<img width="366" alt="groupederessources4" src="https://user-images.githubusercontent.com/108053084/178959858-a0e71049-1845-4d05-a9c0-90e74b2ba05d.png">
+
+
+
+  ### *2. créer le réseau virtuel*
+   
+<img width="473" alt="réseauvirtuelle1" src="https://user-images.githubusercontent.com/108053084/178960907-0b631e38-6e77-48e7-ba75-74f46a580e23.PNG">
+
+---
+<img width="480" alt="réseauvirtuelle2" src="https://user-images.githubusercontent.com/108053084/178962086-560e881f-33fc-47b3-9362-2682d82f5a53.png">
+
+-----
+<img width="400" alt="réseauvirtuelle3" src="https://user-images.githubusercontent.com/108053084/178964278-5440ad0d-58de-4a4e-a93d-7bfd38a8a32d.png">
+
+----
+
+<img width="409" alt="réseauvirtuelle4" src="https://user-images.githubusercontent.com/108053084/178965272-c4d832e9-9061-45f8-819d-6aa15538d8e7.png">
+
+----
+
+<img width="381" alt="réseauvirtuelle5" src="https://user-images.githubusercontent.com/108053084/178966266-9bdbc4a0-f441-448f-ac59-7848a2e08828.png">
+
+---
+
+
+
+
+
+   2.1 définir la plage d'adressage selon le réseau 10.0.2.0/24 ( ne pas oublier de supprimer la plage d'adressage par défaut de AZURE pour éviter le cheveauchement)
+  1. création de la VM admin selon spécification ci-dessus 
+  2. création de la VM BDD selon spécification ci-dessus avec déployement Postgresql
+  3. création de la VM NextCloud selon spécification ci-dessus, installation Apache v 2.4, installation Nextcloud
+  4. mise en place des règles de routage ( HTTP par le port 1080, SSH part le port 1022)
+
+
+<div id='Azure'/> 
 
 <div id='SSH'>
 
@@ -112,18 +160,23 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
  `sudo ssh-keygen`  
  Enregistrer la clé dans un sous-dossier du répertoire utilisateur nommé `.ssh`
 
-[&#8679;](#top) 
+<div id='SSH'/>
+
+
+
+## 4 - Installation paramétrages
+
+[&#8679;](#top)
 
 <div id='Paramétrages'>
 
-## 4 - Installation paramétrages
 
 ### 4.1 - Installation de `ls2-admin`
 
 Ajouter sa clé publique sur la machine virtuelle
 `ssh-copy-id grp2@20.25.9.8`
 
-[&#8679;](#top) 
+<div id='Paramétrages'/> 
 
 ### 4.2 - Installation de `ls2-BDD`
 
@@ -132,7 +185,7 @@ Ajouter sa clé publique sur la machine virtuelle
 `sudo apt install postgresql postgresql-contrib`  
 Modifier deux fichiers 
 
-[&#8679;](#top) 
+<div id='ls2-BDD'/> 
 
 #### b) Création de l'utilisateur "nextcloud"
 `sudo su - postgres psql`   
@@ -141,6 +194,8 @@ Modifier deux fichiers
 `postgres=> GANT ALL PRIVILEGES ON DATABASE nextclouddb TO nextcloud;` 
 
 [&#8679;](#top) 
+
+<div id='nextcloud'/> 
 
 ### 4.3 - Installation de `l2-NC`
 
@@ -172,7 +227,6 @@ Renommer le nouveau dossier `nextcloud` en `html` avec la commande `mv nextcloud
 * 5 - Modifier la configuration de nextcloud : `vim /var/www/html/conf/config.php`  
 * 6 - Modifier le trust domain : dans le tableau mettre `0=> '20.120.12.97:8080`  
 * 7 - Redémarrer apache : `systemctl restart apache2` puis vérifier qu'apache est actif `systemctl status apache2`
- 
  [&#8679;](#top) 
 
  <div id='FQDN'>
@@ -204,6 +258,7 @@ Une fois connecté à la VM Nextcloud, nous avons utilisé les commandes suivant
 `vim /etc/www/var/html/config/config.php`
 
 [&#8679;](#top) 
+
 
 
 
