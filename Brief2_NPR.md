@@ -161,18 +161,14 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 
 ---
 
-<img width="287" alt="mv2" src="https://user-images.githubusercontent.com/108053084/179020047-4b057ead-e5ce-42ac-a0a2-4edf330da3ca.png">
-
-
----
-
 <img width="388" alt="mvadmin pgn" src="https://user-images.githubusercontent.com/108053084/179022563-34927fa5-3a43-448d-8f71-8956a9ce5449.PNG">
 
+---
+  *2. Création de la VM BDD selon spécification ci-dessus avec déployement Postgresql*
 
 
-  2. création de la VM BDD selon spécification ci-dessus avec déployement Postgresql
-  3. création de la VM NextCloud selon spécification ci-dessus, installation Apache v 2.4, installation Nextcloud
-  4. mise en place des règles de routage ( HTTP par le port 1080, SSH part le port 1022)
+  *3. création de la VM NextCloud selon spécification ci-dessus, installation Apache v 2.4, installation Nextcloud*
+  *4. mise en place des règles de routage ( HTTP par le port 1080, SSH part le port 1022)*
 
 
 <div id='Azure'/> 
@@ -282,7 +278,6 @@ Une fois connecté à la VM Nextcloud, nous avons utilisé les commandes suivant
 `vim /etc/www/var/html/config/config.php`
 
 [&#8679;](#top) 
-
 
 
 autorisations réseau  
