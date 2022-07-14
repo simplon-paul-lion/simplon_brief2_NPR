@@ -127,25 +127,49 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 ---
 <img width="480" alt="réseauvirtuelle2" src="https://user-images.githubusercontent.com/108053084/178962086-560e881f-33fc-47b3-9362-2682d82f5a53.png">
 
------
+---
 <img width="400" alt="réseauvirtuelle3" src="https://user-images.githubusercontent.com/108053084/178964278-5440ad0d-58de-4a4e-a93d-7bfd38a8a32d.png">
 
-----
+---
 
-<img width="409" alt="réseauvirtuelle4" src="https://user-images.githubusercontent.com/108053084/178965272-c4d832e9-9061-45f8-819d-6aa15538d8e7.png">
+<img width="430" alt="réseauvirtuelle4" src="https://user-images.githubusercontent.com/108053084/179008086-810aeabd-cf80-4485-8c3d-bbfdf8cd63c6.png">
 
-----
+---
+
+ *2.1 définir la plage d'adressage selon le réseau 10.0.2.0/24 ( ne pas oublier de supprimer la plage d'adressage par défaut de AZURE pour éviter le cheveauchement)*
+
+<img width="478" alt="réseauvirtuelle5 1" src="https://user-images.githubusercontent.com/108053084/179009098-aa23568e-01fb-4018-a3a1-b7386f0b226e.png">
+
+---
 
 <img width="381" alt="réseauvirtuelle5" src="https://user-images.githubusercontent.com/108053084/178966266-9bdbc4a0-f441-448f-ac59-7848a2e08828.png">
 
 ---
 
+<img width="411" alt="réseauvirtuelle7" src="https://user-images.githubusercontent.com/108053084/179009880-ed9fac64-1d7e-482c-a4d6-40756e8e6024.png">
+
+---
+  
+  *2.3 - création de la VM admin selon spécification ci-dessus* 
+
+  
+<img width="467" alt="mv" src="https://user-images.githubusercontent.com/108053084/179014203-f272b59e-3d71-403e-aa8e-aeecbe0e6fb6.png">
+
+---
+
+<img width="318" alt="mv 1" src="https://user-images.githubusercontent.com/108053084/179018049-6ce8e5c5-9aa6-4413-9df6-2237abc5b8e8.PNG">
+
+---
+
+<img width="287" alt="mv2" src="https://user-images.githubusercontent.com/108053084/179020047-4b057ead-e5ce-42ac-a0a2-4edf330da3ca.png">
+
+
+---
+
+<img width="388" alt="mvadmin pgn" src="https://user-images.githubusercontent.com/108053084/179022563-34927fa5-3a43-448d-8f71-8956a9ce5449.PNG">
 
 
 
-
-   2.1 définir la plage d'adressage selon le réseau 10.0.2.0/24 ( ne pas oublier de supprimer la plage d'adressage par défaut de AZURE pour éviter le cheveauchement)
-  1. création de la VM admin selon spécification ci-dessus 
   2. création de la VM BDD selon spécification ci-dessus avec déployement Postgresql
   3. création de la VM NextCloud selon spécification ci-dessus, installation Apache v 2.4, installation Nextcloud
   4. mise en place des règles de routage ( HTTP par le port 1080, SSH part le port 1022)
@@ -258,7 +282,6 @@ Une fois connecté à la VM Nextcloud, nous avons utilisé les commandes suivant
 `vim /etc/www/var/html/config/config.php`
 
 [&#8679;](#top) 
-
 
 
 
