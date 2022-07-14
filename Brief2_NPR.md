@@ -5,28 +5,46 @@ ___
 
 ## Sommaire :
 
-##### [1 - Présentation de l'infrastructure](#Structure)
+### [1 - Présentation de l'infrastructure](#Structure)
 
-##### [2 - Description des éléments de l'infrastructure](#Description)
-&nbsp;&nbsp; &nbsp; *[a) Topologie réseau](#Réseau)*  
-&nbsp;&nbsp; &nbsp; *[b) Table d'adressage ip ](#Ip)* 
-&nbsp;&nbsp; &nbsp; *[c) Les Vm](#Vm)*
-&nbsp;&nbsp; &nbsp; *[d) VM administration](#administration)*  
-&nbsp;&nbsp; &nbsp; *[e) VM netxcloud](#nextcloud)*  
-&nbsp;&nbsp; &nbsp; *[f) VM SGBDR](#SGBDR)*  
-&nbsp;&nbsp; &nbsp; *[g) Liste des ressources](#ressources)*
-##### [3 - Création des clés SSH](#SSH)
-##### [4 - Installation paramétrages](#Paramétrages)
-&nbsp;*[4-1 - Installation de ls2-admin](#ls2admin)*  
-&nbsp;*[4-2 - Installation de ls2-BDD](#ls2-BDD)*  
-&nbsp;&nbsp; &nbsp; *[a) Installation de PostgreSQL](#PostgreSQL)* 
-&nbsp;&nbsp; &nbsp; *[b) Création de l'utilisateur "nextcloud"](#netcloud)*  
-&nbsp;*[4-3 - Installation de ls2-NC](#ls2-NC)*
-&nbsp;&nbsp; &nbsp; *[a) Installation d'Apache2](#APACHE2)*  
-&nbsp;&nbsp; &nbsp; *[b) Installation de PHP](#PHP)* 
-&nbsp;&nbsp; &nbsp; *[c) Installation de Nextcloud](#Nextcloud)*  
-##### [5 - Création d'un FQDN](#FQDN)
-##### [*Bonus : installation de TLS*](#TLS)
+### [2 - Description des éléments de l'infrastructure](#Description)
+
+&nbsp;&nbsp; &nbsp; [a) Topologie réseau](#Réseau) 
+
+&nbsp;&nbsp; &nbsp; [b) Table d'adressage ip ](#Ip) 
+
+&nbsp;&nbsp; &nbsp; [c) Les Vm](#Vm)
+
+&nbsp;&nbsp; &nbsp; [d) VM administration](#administration)
+
+&nbsp;&nbsp; &nbsp; [e) VM netxcloud](#nextcloud) 
+
+&nbsp;&nbsp; &nbsp; [f) VM SGBDR](#SGBDR)
+
+&nbsp;&nbsp; &nbsp; [g) Liste des ressources](#ressources)
+### [3 - Création des clés SSH](#SSH)
+
+### [4 - Installation paramétrages](#Paramétrages)
+
+&nbsp;[4-1 - Installation de ls2-admin](#ls2admin)
+
+&nbsp;[4-2 - Installation de ls2-BDD](#ls2-BDD) 
+
+&nbsp;&nbsp; &nbsp; [a) Installation de PostgreSQL](#PostgreSQL)
+
+&nbsp;&nbsp; &nbsp; [b) Création de l'utilisateur "nextcloud"](#netcloud)
+
+&nbsp;[4-3 - Installation de ls2-NC](#ls2-NC)
+
+&nbsp;&nbsp; &nbsp; [a) Installation d'Apache2](#APACHE2)
+
+&nbsp;&nbsp; &nbsp; [b) Installation de PHP](#PHP)
+
+&nbsp;&nbsp; &nbsp; [c) Installation de Nextcloud](#Nextcloud)
+
+### [5 - Création d'un FQDN](#FQDN)
+
+### [*Bonus : installation de TLS*](#TLS)
 
 
 <div id='Structure'/>
@@ -75,7 +93,7 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
   ||Ls-grp2-admin||
   |---|---|-------|
   | OS |Débian 11 "bullseye"|
-  |HDD| 30 Go| |
+  |HDD| 32 Go| |
   |CPU| 2 | |
   | RAM | 8 Go | |
   | Filesystem| ext4 | |
@@ -84,7 +102,7 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
   ||LifeNC-grp2||
   |---|---|-------|
   | OS |Débian 11 "bullseye"|
-  |HDD| 30 Go| |
+  |HDD| 128 Go| |
   |CPU| 2 | |
   | RAM | 8 Go | |
   | Filesystem| ext4 | |
@@ -95,7 +113,7 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
   ||LifeBDD||
   |---|---|-------|
   | OS |Débian 11 "bullseye"|
-  |HDD| 30 Go| |
+  |HDD| 64 Go| |
   |CPU| 2 | |
   | RAM | 8 Go | |
   | Filesystem| ext4 | |
@@ -117,7 +135,6 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 ----
 
 <img width="366" alt="groupederessources4" src="https://user-images.githubusercontent.com/108053084/178959858-a0e71049-1845-4d05-a9c0-90e74b2ba05d.png">
-
 
 
   ### *2. créer le réseau virtuel*
@@ -150,7 +167,7 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 
 ---
   
-  *2.3 - création de la VM admin selon spécification ci-dessus* 
+  *2.2 - création de la VM admin selon spécification ci-dessus* 
 
   
 <img width="467" alt="mv" src="https://user-images.githubusercontent.com/108053084/179014203-f272b59e-3d71-403e-aa8e-aeecbe0e6fb6.png">
@@ -161,13 +178,66 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 
 ---
 
-<img width="388" alt="mvadmin pgn" src="https://user-images.githubusercontent.com/108053084/179022563-34927fa5-3a43-448d-8f71-8956a9ce5449.PNG">
+<img width="375" alt="hdd" src="https://user-images.githubusercontent.com/108053084/179063039-0d98c301-c1fd-48cd-9f39-ea769b19e25b.png">
 
 ---
-  *2. Création de la VM BDD selon spécification ci-dessus avec déployement Postgresql*
 
+<img width="347" alt="disquedu png" src="https://user-images.githubusercontent.com/108053084/179064504-c31f3a27-1e42-4fad-82fc-28ffff035311.PNG">
 
-  *3. création de la VM NextCloud selon spécification ci-dessus, installation Apache v 2.4, installation Nextcloud*
+---
+
+<img width="327" alt="mvadmin4" src="https://user-images.githubusercontent.com/108053084/179064852-b015b3c5-c2f5-44fc-a802-5a82157ab696.png">
+
+---
+
+<img width="442" alt="mvadmin5" src="https://user-images.githubusercontent.com/108053084/179065123-c8952d9f-d209-4f80-9081-302a992b1d60.png">
+
+---
+
+  *2.3 Création de la VM BDD selon spécification ci-dessus avec déployement Postgresql*
+
+  <img width="275" alt="lsbdd1" src="https://user-images.githubusercontent.com/108053084/179067414-515075b6-e228-49de-b656-12abf70357f3.png">
+
+---
+
+<img width="338" alt="lsbdd2" src="https://user-images.githubusercontent.com/108053084/179070934-1de69abc-04a2-4918-b4ad-164aa8cd1abe.png">
+
+---
+
+<img width="329" alt="lsbdd3" src="https://user-images.githubusercontent.com/108053084/179071829-bfdde545-3e88-42c1-a9ef-ae89c0b8454e.png">
+
+---
+
+<img width="484" alt="lsbdd3 1" src="https://user-images.githubusercontent.com/108053084/179072256-3f4272c4-7647-47bb-bbdf-1d097b954a62.png">
+
+---
+
+<img width="366" alt="lsbdd4" src="https://user-images.githubusercontent.com/108053084/179073249-31e94639-4754-47d1-a974-82d53d45deee.png">
+
+---
+
+<img width="510" alt="lsbdd5" src="https://user-images.githubusercontent.com/108053084/179074467-a8687c02-41da-4779-b16d-201157fd0765.png">
+
+---
+
+  *2.4 création de la VM NextCloud selon spécification ci-dessus, installation Apache v 2.4, installation Nextcloud*
+
+<img width="276" alt="lsnc pgn" src="https://user-images.githubusercontent.com/108053084/179076891-e1f5b6b7-277d-4eb4-88df-3c39d19ed2a9.PNG">
+
+---
+
+<img width="399" alt="lsnc1 pgn" src="https://user-images.githubusercontent.com/108053084/179078030-00664eca-04ab-4787-8766-2cbd97921bc6.PNG">
+
+---
+
+<img width="398" alt="lsnc2 pgn" src="https://user-images.githubusercontent.com/108053084/179079066-71c5de35-bb9a-4c30-8c54-7e30ef9884fd.PNG">
+
+<img width="442" alt="lsnc2 1 pgn" src="https://user-images.githubusercontent.com/108053084/179079669-d79fe47e-aaae-43ea-97e9-36f7959efa8f.PNG">
+
+---
+
+<img width="398" alt="lsnc3 pgn" src="https://user-images.githubusercontent.com/108053084/179084589-052e22a4-cfee-40af-9167-272ad4bc8bde.PNG">
+
   *4. mise en place des règles de routage ( HTTP par le port 1080, SSH part le port 1022)*
 
 
@@ -253,14 +323,40 @@ Renommer le nouveau dossier `nextcloud` en `html` avec la commande `mv nextcloud
 
 ### 5 - Création d'un FQDN
 
-* 1 - Aller dans Microsoft Azure et taper "FQDN" dans la barre de recherche.
-* 2 - Dans Microsoft Azure, aller sur la VM `ls2-admin`
-* 3 - Dans le menu de gauche, aller dans Propriétés
-* 4 - Séléctionner l'adresse IP sous Adresse IP publique\Etiquettes du nom DNS
-* 5 - Sous Étiquette du nom DNS, entrer le préfixe à utiliser
-* 6 - Sélectionner Enregistrer en haut de la page
-* 7 - dans le menu de gauche, sélectionner" Vue d’ensemble" pour revenir à la vue d’ensemble de la machine virtuelle
-* 8 - Vérifier que le nom DNS s’affiche correctement
+* 1 - *Aller dans Microsoft Azure et taper "FQDN" dans la barre de recherche.*
+
+  *Sélectionnez la machine virtuelle  "nextcloud"*
+
+<img width="440" alt="fqdn" src="https://user-images.githubusercontent.com/108053084/179086423-8b4d5e5e-7fdd-4c84-94f5-1961d490033e.PNG">
+
+* 2 - *Dans le menu de gauche, sélectionnez Propriétés*.
+
+<img width="318" alt="fqdn2" src="https://user-images.githubusercontent.com/108053084/179089772-dd200f34-8df1-4ad3-bb6d-c03e1b5e4886.png">
+
+* 3 - *Sous Adresse IP publique\Étiquette du nom DNS, sélectionnez notre adresse IP*
+
+<img width="306" alt="fqdn2" src="https://user-images.githubusercontent.com/108053084/179089590-0321f5f2-6230-44e9-8de2-0aabe57d1acc.png">
+
+
+* 4 - *Sous Étiquette du nom DNS, entrez le préfixe à utiliser*
+
+<img width="438" alt="fqdn3" src="https://user-images.githubusercontent.com/108053084/179090204-bfe7f1b2-31e1-4831-bfc6-6b6de31202d8.png">
+
+ * 5 - *En haut de la page, sélectionnez Enregistrer*
+
+<img width="438" alt="fqdn3" src="https://user-images.githubusercontent.com/108053084/179090525-e4104ca5-813e-4ff8-8742-8ae7808a0465.png">
+
+ * 6 - *Sélectionnez Vue d’ensemble dans le menu de gauche pour revenir à la vue d’ensemble de la machine virtuelle "nextcloud"*.
+
+<img width="439" alt="fqdn4" src="https://user-images.githubusercontent.com/108053084/179090934-d42f97ee-41d1-4a7e-b5e5-ca57578915e9.png">
+
+ * 7 - *Vérifiez que le nom DNS s’affiche correctement*.
+
+<img width="437" alt="fqdn5" src="https://user-images.githubusercontent.com/108053084/179091587-975b58cf-4928-4ab3-996d-e1cfb9146b3e.png">
+
+
+<img width="440" alt="fqdn6" src="https://user-images.githubusercontent.com/108053084/179097788-fec15aae-f8e3-47b8-b1f6-50a4025a1f6b.png">
+
 
 [&#8679;](#top) 
 
@@ -278,7 +374,6 @@ Une fois connecté à la VM Nextcloud, nous avons utilisé les commandes suivant
 `vim /etc/www/var/html/config/config.php`
 
 [&#8679;](#top) 
-
 
 autorisations réseau  
 pghba liste des users et quelle ip  
