@@ -308,6 +308,7 @@ Aller sur Azure et changer le port http 80 par 8080 en cliquant sur `mise en ré
 [&#8679;](#top) 
 
 #### c) Installation de Nextcloud
+ Procéder à l'installation en root.
 * 1 -  Supprimer le dossier `/var/www/html`  
 * 2 - Aller dans /var/www/ et y télécharger nextcloud 
 `apt-get https://download.nextcloud.com/server/releases/latest.tar.bz2`  
