@@ -248,7 +248,8 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
  ## 3 - Création des clés SSH   
  Lancer Windows PowerShell et taper la commande :  
  `sudo ssh-keygen`  
- Enregistrer la clé dans un sous-dossier du répertoire utilisateur nommé `.ssh`
+ Il est important de ne pas utiliser le sudo afin de ne pas donner tous les droits à la clé publique de l'utilisateur, ce qui pourrait ensuite poser des conflits.
+  Enregistrer la clé dans un sous-dossier du répertoire utilisateur nommé `.ssh`
 
 <div id='SSH'/>
 
