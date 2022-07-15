@@ -51,7 +51,7 @@ ___
 
 ## 1- Présentation de l'infrastructure   
 L'infrastructure doit être composée de trois VM. Elle sera déployé en utilisant la solution AZURE CLOUD  
-1. VM d'administration qui doit être accessile depuis l'extérieur.
+1. VM d'administration qui doit être accessible depuis l'extérieur.
 Elle sert de rebond pour pouvoir : administrer les 2 autres VM.
 1. VM applicative : elle héberge l'application "Nextcloud", elle est reliée à la VM qui héberge le serveur base de données. 
 2. La VM Base de données : elle distribue son service à destination de la VM applicative.  
