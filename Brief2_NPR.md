@@ -358,6 +358,7 @@ Renommer le nouveau dossier `nextcloud` en `html` avec la commande `mv nextcloud
 
 <img width="440" alt="fqdn6" src="https://user-images.githubusercontent.com/108053084/179097788-fec15aae-f8e3-47b8-b1f6-50a4025a1f6b.png">
 
+ Ajouter dans le fichier de configuration nextcloud (config.php), le nom de domaine en tant que trusted_domains.
 
 [&#8679;](#top) 
 
