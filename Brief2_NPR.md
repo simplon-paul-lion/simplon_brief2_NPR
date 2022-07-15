@@ -51,7 +51,7 @@ ___
 
 ## 1- Présentation de l'infrastructure   
 L'infrastructure doit être composée de trois VM. Elle sera déployé en utilisant la solution AZURE CLOUD  
-1. VM d'administration qui doit être accessible depuis l'extérieur.
+1. VM d'administration qui doit être accessile depuis l'extérieur.
 Elle sert de rebond pour pouvoir : administrer les 2 autres VM.
 1. VM applicative : elle héberge l'application "Nextcloud", elle est reliée à la VM qui héberge le serveur base de données. 
 2. La VM Base de données : elle distribue son service à destination de la VM applicative.  
@@ -248,15 +248,15 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
  ## 3 - Création des clés SSH   
  Lancer Windows PowerShell et taper la commande :  
  `sudo ssh-keygen`  
+ Il est important de ne pas utiliser le sudo afin de ne pas donner tous les droits à la clé publique de l'utilisateur, ce qui pourrait ensuite poser des conflits.  
  Enregistrer la clé dans un sous-dossier du répertoire utilisateur nommé `.ssh`
 
 <div id='SSH'/>
 
-
+[&#8679;](#top)
 
 ## 4 - Installation paramétrages
 
-[&#8679;](#top)
 
 <div id='Paramétrages'>
 
@@ -281,7 +281,7 @@ Modifier deux fichiers
 `sudo su - postgres psql`   
 `postgres=> ALTER ROLE nextcloud WITH PASSWORD Lifesense123;`  
 `postgres=> CREATE DATABASE nextclouddb;`  
-`postgres=> GANT ALL PRIVILEGES ON DATABASE nextclouddb TO nextcloud;` 
+`postgres=> GRANT ALL PRIVILEGES ON DATABASE nextclouddb TO nextcloud;` 
 
 [&#8679;](#top) 
 
@@ -308,6 +308,7 @@ Aller sur Azure et changer le port http 80 par 8080 en cliquant sur `mise en ré
 [&#8679;](#top) 
 
 #### c) Installation de Nextcloud
+ Procéder à l'installation en root.
 * 1 -  Supprimer le dossier `/var/www/html`  
 * 2 - Aller dans /var/www/ et y télécharger nextcloud 
 `apt-get https://download.nextcloud.com/server/releases/latest.tar.bz2`  
@@ -357,6 +358,7 @@ Renommer le nouveau dossier `nextcloud` en `html` avec la commande `mv nextcloud
 
 <img width="440" alt="fqdn6" src="https://user-images.githubusercontent.com/108053084/179097788-fec15aae-f8e3-47b8-b1f6-50a4025a1f6b.png">
 
+* 8 - *Ajouter dans le fichier de configuration nextcloud (config.php), le nom de domaine en tant que trusted_domains.*
 
 [&#8679;](#top) 
 
@@ -368,7 +370,7 @@ Une fois connecté à la VM Nextcloud, nous avons utilisé les commandes suivant
 * 1 - Installation de Cerbot  
 `sudo apt install python3-certbot-apache -y`  
 * 2 - Création du certificat TLS `sudo certbot --apache --agree-tos --redirect --hsts --staple-ocsp -d lifesense2.eastus.cloudapp.azure.com` 
-* 3 - Cerbot doit automatiquement passer par le port 80  
+* 3 - Cerbot impose l'utilisation du port 80  
 `vim /etc/apache2/config/ports.conf`
 * 4 - Il faut ensuite changer le Trusted Domains  
 `vim /etc/www/var/html/config/config.php`
@@ -378,6 +380,16 @@ Une fois connecté à la VM Nextcloud, nous avons utilisé les commandes suivant
 autorisations réseau  
 pghba liste des users et quelle ip  
 postgres.conf * 0.0.0.0 
+ 
+  
+
+ 
+    
+ 
+  
+
+ 
+     
  
   
 
