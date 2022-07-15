@@ -253,11 +253,10 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 
 <div id='SSH'/>
 
-
+[&#8679;](#top)
 
 ## 4 - Installation paramétrages
 
-[&#8679;](#top)
 
 <div id='Paramétrages'>
 
@@ -282,7 +281,7 @@ Modifier deux fichiers
 `sudo su - postgres psql`   
 `postgres=> ALTER ROLE nextcloud WITH PASSWORD Lifesense123;`  
 `postgres=> CREATE DATABASE nextclouddb;`  
-`postgres=> GANT ALL PRIVILEGES ON DATABASE nextclouddb TO nextcloud;` 
+`postgres=> GRANT ALL PRIVILEGES ON DATABASE nextclouddb TO nextcloud;` 
 
 [&#8679;](#top) 
 
