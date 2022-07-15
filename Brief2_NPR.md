@@ -1,5 +1,5 @@
-### *Brief 2*
-Groupe 2 : Paul, Dunvael, Raja, Noa
+# *Brief 2*
+Groupe 2 : Dunvael, Noa, Paul, Raja
 ___
 <div id='top'/>
 
@@ -8,35 +8,29 @@ ___
 ### [1 - Présentation de l'infrastructure](#Structure)
 
 ### [2 - Description des éléments de l'infrastructure](#Description)
+&nbsp;&nbsp;&nbsp;[a) Topologie réseau](#Réseau) 
+&nbsp;&nbsp;&nbsp;[b) Table d'adressage ip ](#Adressage) 
+&nbsp;&nbsp;&nbsp;[c) Les machines virtuelles](#VM)
+&nbsp;&nbsp;&nbsp;[d) VM administration](#Administration)
+&nbsp;&nbsp;&nbsp;[e) VM nextcloud](#VMNextcloud) 
+&nbsp;&nbsp;&nbsp;[f) VM SGBDR](#SGBDR)
+&nbsp;&nbsp;&nbsp;[g) Liste des ressources](#ListeRessources)
 
-&nbsp;&nbsp; &nbsp; [a) Topologie réseau](#Réseau) 
-
-&nbsp;&nbsp; &nbsp; [b) Table d'adressage ip ](#Ip) 
-
-&nbsp;&nbsp; &nbsp; [c) Les Vm](#Vm)
-
-&nbsp;&nbsp; &nbsp; [d) VM administration](#administration)
-
-&nbsp;&nbsp; &nbsp; [e) VM netxcloud](#nextcloud) 
-
-&nbsp;&nbsp; &nbsp; [f) VM SGBDR](#SGBDR)
-
-&nbsp;&nbsp; &nbsp; [g) Liste des ressources](#ressources)
 ### [3 - Création des clés SSH](#SSH)
 
 ### [4 - Installation paramétrages](#Paramétrages)
 
-&nbsp;[4-1 - Installation de ls2-admin](#ls2admin)
+&nbsp;[4-1 - Installation de ls2-admin](#ls2-admin)
 
 &nbsp;[4-2 - Installation de ls2-BDD](#ls2-BDD) 
 
 &nbsp;&nbsp; &nbsp; [a) Installation de PostgreSQL](#PostgreSQL)
 
-&nbsp;&nbsp; &nbsp; [b) Création de l'utilisateur "nextcloud"](#netcloud)
+&nbsp;&nbsp; &nbsp; [b) Création de l'utilisateur "nextcloud"](#Utilisateur)
 
 &nbsp;[4-3 - Installation de ls2-NC](#ls2-NC)
 
-&nbsp;&nbsp; &nbsp; [a) Installation d'Apache2](#APACHE2)
+&nbsp;&nbsp; &nbsp; [a) Installation d'Apache2](#Apache)
 
 &nbsp;&nbsp; &nbsp; [b) Installation de PHP](#PHP)
 
@@ -44,7 +38,7 @@ ___
 
 ### [5 - Création d'un FQDN](#FQDN)
 
-### [*Bonus : installation de TLS*](#TLS)
+### [*6 - Bonus : installation de TLS*](#TLS)
 
 
 <div id='Structure'/>
@@ -64,16 +58,15 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 
 ## 2- Description des éléments de l'infrastructure  
 
+<div id='Réseau'/>
+
   ## a) Topologie réseau  
 
 ![Topologie](plan_reseau.png)
 
 [&#8679;](#top)
 
-<div id='réseau'/>
-
-
-
+<div id='Adressage'/>
   
   ## b) Table d'adressage ip  
   |nom de la VM|ip privée|ip public| Fonction |
@@ -85,9 +78,17 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
   |Passerelle | ip privée | DNS |
   |-----------|-----------|-----|
   | fournit par azure| 10.0.2.1| 168.63.129.16|
-  
+ 
+ [&#8679;](#top)
+ 
+ <div id='VM'/>
+ 
   ## c) Les VM
   (vérifier le thin provisionning de AZURE STACK HCI)
+
+[&#8679;](#top)
+
+<div id='Administration'/>
 
   ### d) VM administration  
   ||Ls-grp2-admin||
@@ -98,6 +99,10 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
   | RAM | 8 Go | |
   | Filesystem| ext4 | |
   
+ [&#8679;](#top)
+ 
+ <div id='VMNextcloud'/> 
+ 
   ### e) VM Nextcloud  
   ||LifeNC-grp2||
   |---|---|-------|
@@ -108,7 +113,11 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
   | Filesystem| ext4 | |
   | soft 1 | Apache V 2.4 | serveur web |
   | soft 2| NextCloud | |
-  
+ 
+ [&#8679;](#top)
+ 
+ <div id='SGBDR'/> 
+ 
   ### f) VM SGBDR  
   ||LifeBDD||
   |---|---|-------|
@@ -118,7 +127,11 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
   | RAM | 8 Go | |
   | Filesystem| ext4 | |
   | soft 1| Postgresql | SGBR |
-  
+ 
+ [&#8679;](#top)
+ 
+ <div id='ListeRessources'/> 
+ 
   ## g) Liste des ressources AZURE  
   ### *1. Créer le groupe de ressource* 
 
@@ -136,6 +149,7 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 
 <img width="366" alt="groupederessources4" src="https://user-images.githubusercontent.com/108053084/178959858-a0e71049-1845-4d05-a9c0-90e74b2ba05d.png">
 
+[&#8679;](#top)
 
   ### *2. créer le réseau virtuel*
    
@@ -152,8 +166,9 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 <img width="430" alt="réseauvirtuelle4" src="https://user-images.githubusercontent.com/108053084/179008086-810aeabd-cf80-4485-8c3d-bbfdf8cd63c6.png">
 
 ---
+[&#8679;](#top)
 
- *2.1 définir la plage d'adressage selon le réseau 10.0.2.0/24 ( ne pas oublier de supprimer la plage d'adressage par défaut de AZURE pour éviter le cheveauchement)*
+ * 2.1 *Définir la plage d'adressage selon le réseau 10.0.2.0/24 ( ne pas oublier de supprimer la plage d'adressage par défaut de AZURE pour éviter le cheveauchement)*
 
 <img width="478" alt="réseauvirtuelle5 1" src="https://user-images.githubusercontent.com/108053084/179009098-aa23568e-01fb-4018-a3a1-b7386f0b226e.png">
 
@@ -166,8 +181,9 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 <img width="411" alt="réseauvirtuelle7" src="https://user-images.githubusercontent.com/108053084/179009880-ed9fac64-1d7e-482c-a4d6-40756e8e6024.png">
 
 ---
-  
-  *2.2 - création de la VM admin selon spécification ci-dessus* 
+[&#8679;](#top)
+
+  * 2.2 - *Création de la VM admin selon spécification ci-dessus* 
 
   
 <img width="467" alt="mv" src="https://user-images.githubusercontent.com/108053084/179014203-f272b59e-3d71-403e-aa8e-aeecbe0e6fb6.png">
@@ -194,7 +210,9 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 
 ---
 
-  *2.3 Création de la VM BDD selon spécification ci-dessus avec déployement Postgresql*
+[&#8679;](#top)
+
+  * 2.3 *Création de la VM BDD selon spécification ci-dessus avec déployement Postgresql*
 
   <img width="275" alt="lsbdd1" src="https://user-images.githubusercontent.com/108053084/179067414-515075b6-e228-49de-b656-12abf70357f3.png">
 
@@ -219,8 +237,9 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 <img width="510" alt="lsbdd5" src="https://user-images.githubusercontent.com/108053084/179074467-a8687c02-41da-4779-b16d-201157fd0765.png">
 
 ---
+[&#8679;](#top)
 
-  *2.4 création de la VM NextCloud selon spécification ci-dessus, installation Apache v 2.4, installation Nextcloud*
+  * 2.4 *Création de la VM NextCloud selon spécification ci-dessus, installation Apache v 2.4, installation Nextcloud*
 
 <img width="276" alt="lsnc pgn" src="https://user-images.githubusercontent.com/108053084/179076891-e1f5b6b7-277d-4eb4-88df-3c39d19ed2a9.PNG">
 
@@ -238,27 +257,33 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 
 <img width="398" alt="lsnc3 pgn" src="https://user-images.githubusercontent.com/108053084/179084589-052e22a4-cfee-40af-9167-272ad4bc8bde.PNG">
 
-  *4. mise en place des règles de routage ( HTTP par le port 1080, SSH part le port 1022)*
 
+[&#8679;](#top)
 
-<div id='Azure'/> 
+  * 3. *Mise en place des règles de routage ( HTTP par le port 1080, SSH part le port 1022)*
+
+[&#8679;](#top)
 
 <div id='SSH'>
 
  ## 3 - Création des clés SSH   
- Lancer Windows PowerShell et taper la commande :  
- `sudo ssh-keygen`  
- Il est important de ne pas utiliser le sudo afin de ne pas donner tous les droits à la clé publique de l'utilisateur, ce qui pourrait ensuite poser des conflits.  
- Enregistrer la clé dans un sous-dossier du répertoire utilisateur nommé `.ssh`
+Se connecter à la VM à partir de Windows PowerShell.  
+<img width="419" alt="Connection_VM" src="https://user-images.githubusercontent.com/108001918/179228110-7fbfb01b-b0d7-4b1a-8c9c-461110aac306.PNG">
+Lancer Windows PowerShell et taper la commande :  
+`sudo ssh-keygen`  
+<img width="349" alt="SSH_keygen" src="https://user-images.githubusercontent.com/108001918/179228175-61c0853f-589f-42b3-a529-1f3611131cf9.PNG">
+Il est important de ne pas utiliser le sudo afin de ne pas donner tous les droits à la clé publique de l'utilisateur, ce qui pourrait ensuite poser des conflits.  
+Enregistrer la clé dans un sous-dossier du répertoire utilisateur nommé `.ssh`
 
-<div id='SSH'/>
 
 [&#8679;](#top)
+
+<div id='Paramétrages'>
 
 ## 4 - Installation paramétrages
 
 
-<div id='Paramétrages'>
+<div id='ls2-admin'>
 
 
 ### 4.1 - Installation de `ls2-admin`
@@ -266,16 +291,71 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 Ajouter sa clé publique sur la machine virtuelle
 `ssh-copy-id grp2@20.25.9.8`
 
-<div id='Paramétrages'/> 
+[&#8679;](#top)
+    
+<div id='ls2-BDD'/> 
 
 ### 4.2 - Installation de `ls2-BDD`
 
+<div id='PostgreSQL'/>
+
 #### a) Installation de PostgreSQL
 `sudo apt update`
-`sudo apt install postgresql postgresql-contrib`  
-Modifier deux fichiers 
+    
+```
+root@ls2-BDD:/home/grp2# apt-get install postgresql
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+postgresql is already the newest version (13+225).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+```
 
-<div id='ls2-BDD'/> 
+`sudo apt install postgresql postgresql-contrib` 
+
+``` consol
+    
+root@ls2-BDD:/home/grp2# sudo apt install postgresql postgresql-contrib
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+postgresql is already the newest version (13+225).
+The following NEW packages will be installed:
+  postgresql-contrib
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 64.8 kB of archives.
+Selecting previously unselected package postgresql-contrib. be used.
+(Reading database ... 26618 files and directories currently installed.)
+Preparing to unpack .../postgresql-contrib_13+225_all.deb ...
+Unpacking postgresql-contrib (13+225) ...
+Setting up postgresql-contrib (13+225) ...   
+
+```
+    
+##### Configuration du PostgreSQL
+
+Une partie de la configuration se trouve dans le fichier `/etc/postgresql/13/main/pg_hba.conf`.
+    
+```
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+# "local" is for Unix domain socket connections only
+local   all             all                                     peer
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            md5
+host	all		nextcloud	10.0.2.11/32		md5
+# IPv6 local connections:
+host    all             all             ::1/128                 md5
+# Allow replication connections from localhost, by a user with the
+# replication privilege.
+local   replication     all                                     peer
+host    replication     all             127.0.0.1/32            md5
+host    replication     all             ::1/128                 md5 
+```
+
+[&#8679;](#top)
+    
+<div id='Utilisateur'/> 
 
 #### b) Création de l'utilisateur "nextcloud"
 `sudo su - postgres psql`   
@@ -287,26 +367,92 @@ Modifier deux fichiers
 
 <div id='nextcloud'/> 
 
-### 4.3 - Installation de `l2-NC`
+<div id='ls2-NC'/>
+
+### 4.3 - Installation de `ls2-NC`
+
+<div id='Apache'/>
 
 #### a) Installation d'Apache
 `sudo apt-get install apache2`  
+    
+``` consol 
+
+grp2@ls2-nextcloud:~$ sudo -s
+root@ls2-nextcloud:/home/grp2# sudo apt-get install apache2
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+apache2 is already the newest version (2.4.54-1~deb11u1).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+    
+```
+
+Mettre à jour la liste des paquets apache disponibles : `sudo apt-get update`
+    
+``` consol 
+    
+root@ls2-nextcloud:/home/grp2# sudo apt-get update
+Hit:1 http://debian-archive.trafficmanager.net/debian bullseye InRelease
+Hit:2 http://debian-archive.trafficmanager.net/debian-security bullseye-security InRelease
+Get:3 http://debian-archive.trafficmanager.net/debian bullseye-updates InRelease [39.4 kB]
+Get:4 http://debian-archive.trafficmanager.net/debian bullseye-backports InRelease [44.2 kB]
+Get:5 http://debian-archive.trafficmanager.net/debian bullseye-backports/main Sources.diff/Index [63.3 kB]
+Get:6 http://debian-archive.trafficmanager.net/debian bullseye-backports/main amd64 Packages.diff/Index [63.3 kB]
+Get:7 http://debian-archive.trafficmanager.net/debian bullseye-backports/main Sources T-2022-07-15-0209.58-F-2022-07-15-0209.58.pdiff [615 B]
+Get:7 http://debian-archive.trafficmanager.net/debian bullseye-backports/main Sources T-2022-07-15-0209.58-F-2022-07-15-0209.58.pdiff [615 B]
+Get:8 http://debian-archive.trafficmanager.net/debian bullseye-backports/main amd64 Packages T-2022-07-15-0806.17-F-2022-07-15-0209.58.pdiff [17.8 kB]
+Get:8 http://debian-archive.trafficmanager.net/debian bullseye-backports/main amd64 Packages T-2022-07-15-0806.17-F-2022-07-15-0209.58.pdiff [17.8 kB]
+Fetched 229 kB in 1s (447 kB/s)
+Reading package lists... Done
+        
+```
+  
+Installer la dernière version des paquets d'apache : `sudo apt-get upgrade`
+
+``` consol
+
+root@ls2-nextcloud:/home/grp2# sudo apt-get upgrade
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Calculating upgrade... Done
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+    
+```
 
 Changer le port d'écoute en 8080 : `vim /etc/apache2/ports.conf`   
 
-Dans vim, modifier la ligne : `Listen 80` en `Listen 8080`   
+Dans vim, modifier la ligne : `Listen 80` en `Listen 8080` 
 
-Aller sur Azure et changer le port http 80 par 8080 en cliquant sur `mise en réseau > custom`
+ <img width="229" alt="8080" src="https://user-images.githubusercontent.com/108053084/179221942-9411ee12-8160-48da-befb-f6a6b93760c0.png">
+  
+---
+    
+Aller sur Azure et changer le port http 80 par 8080 en cliquant sur `mise en réseau > custom` 
+
+
+<img width="794" alt="80801" src="https://user-images.githubusercontent.com/108053084/179229218-c069be4a-a692-4075-b794-964c500b4c59.png">
+    
+Puis taper `systemctl reload apache2`  
+Enfin, vérifier le statut d'apache `systemctl status apache2`
+    
+
 
 [&#8679;](#top) 
 
+<div id='PHP'/>
+    
 #### b) Installation de PHP
 `sudo apt -y install php php-common php-zip php-gd php-mbstring php-curl php-xml php-pgsql`
 
-`sudo systemctl restart apache2`
+`sudo systemctl reload apache2` 
+`sudo systemctl status apache2`
 
 [&#8679;](#top) 
 
+<div id='Nextcloud'/>
+    
 #### c) Installation de Nextcloud
  Procéder à l'installation en root.
 * 1 -  Supprimer le dossier `/var/www/html`  
@@ -318,11 +464,12 @@ Renommer le nouveau dossier `nextcloud` en `html` avec la commande `mv nextcloud
 * 5 - Modifier la configuration de nextcloud : `vim /var/www/html/conf/config.php`  
 * 6 - Modifier le trust domain : dans le tableau mettre `0=> '20.120.12.97:8080`  
 * 7 - Redémarrer apache : `systemctl restart apache2` puis vérifier qu'apache est actif `systemctl status apache2`
- [&#8679;](#top) 
 
- <div id='FQDN'>
+[&#8679;](#top) 
 
-### 5 - Création d'un FQDN
+ <div id='FQDN'>  
+
+## 5 - Création d'un FQDN
 
 * 1 - *Aller dans Microsoft Azure et taper "FQDN" dans la barre de recherche.*
 
@@ -356,42 +503,43 @@ Renommer le nouveau dossier `nextcloud` en `html` avec la commande `mv nextcloud
 <img width="437" alt="fqdn5" src="https://user-images.githubusercontent.com/108053084/179091587-975b58cf-4928-4ab3-996d-e1cfb9146b3e.png">
 
 
-<img width="440" alt="fqdn6" src="https://user-images.githubusercontent.com/108053084/179097788-fec15aae-f8e3-47b8-b1f6-50a4025a1f6b.png">
+<img width="763" alt="Nextcloud_https_2" src="https://user-images.githubusercontent.com/108001918/179228463-fe06a617-cc34-4b8a-bcbe-3721e158e0c0.PNG">
 
-* 8 - *Ajouter dans le fichier de configuration nextcloud (config.php), le nom de domaine en tant que trusted_domains.*
+* 8 - *Ajouter dans le fichier de configuration nextcloud (config.php), le nom de domaine en tant que trusted_domains.*  
 
 [&#8679;](#top) 
 
  <div id='TLS'>
 
-### *Bonus : installation de TLS*
+### *6 - Bonus : installation de TLS*
 
 Une fois connecté à la VM Nextcloud, nous avons utilisé les commandes suivantes:  
 * 1 - Installation de Cerbot  
 `sudo apt install python3-certbot-apache -y`  
-* 2 - Création du certificat TLS `sudo certbot --apache --agree-tos --redirect --hsts --staple-ocsp -d lifesense2.eastus.cloudapp.azure.com` 
+     
+``` consol
+     
+grp2@ls2-nextcloud:~$ sudo apt install python3-certbot-apache -y
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+python3-certbot-apache is already the newest version (1.10.1-1).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+```
+     
+* 2 - Création du certificat TLS   
+`sudo certbot --apache --agree-tos --redirect --hsts --staple-ocsp -d lifesense2.eastus.cloudapp.azure.com`
+     
 * 3 - Cerbot impose l'utilisation du port 80  
-`vim /etc/apache2/config/ports.conf`
+`vim /etc/apache2/config/ports.conf`  
+<img width="388" alt="Ports_80" src="https://user-images.githubusercontent.com/108001918/179229660-5fba37a2-4e71-468c-94df-22599f7ad9c2.PNG">
+
 * 4 - Il faut ensuite changer le Trusted Domains  
 `vim /etc/www/var/html/config/config.php`
+<img width="345" alt="Trusted_domains" src="https://user-images.githubusercontent.com/108001918/179228634-11cc87d3-8b91-4658-b005-b5e2b124e371.PNG">
 
 [&#8679;](#top) 
 
 autorisations réseau  
-pghba liste des users et quelle ip  
 postgres.conf * 0.0.0.0 
- 
-  
-
- 
-    
- 
-  
-
- 
-     
- 
-  
-
- 
-    
