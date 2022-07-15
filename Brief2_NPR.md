@@ -370,7 +370,7 @@ Une fois connecté à la VM Nextcloud, nous avons utilisé les commandes suivant
 * 1 - Installation de Cerbot  
 `sudo apt install python3-certbot-apache -y`  
 * 2 - Création du certificat TLS `sudo certbot --apache --agree-tos --redirect --hsts --staple-ocsp -d lifesense2.eastus.cloudapp.azure.com` 
-* 3 - Cerbot doit automatiquement passer par le port 80  
+* 3 - Cerbot impose l'utilisation du port 80  
 `vim /etc/apache2/config/ports.conf`
 * 4 - Il faut ensuite changer le Trusted Domains  
 `vim /etc/www/var/html/config/config.php`
