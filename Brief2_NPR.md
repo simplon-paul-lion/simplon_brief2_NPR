@@ -62,7 +62,7 @@ L'infrastructure sera déployé sur le réseau 10.0.2.0/24
 
   ## a) Topologie réseau  
 
-![Topologie](plan_reseau.png)
+![plan_reseau](https://user-images.githubusercontent.com/108001918/179240652-f42f8f16-95e1-4d1c-8cb1-937da5150328.png)
 
 [&#8679;](#top)
 
