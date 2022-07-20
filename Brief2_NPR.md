@@ -540,6 +540,3 @@ python3-certbot-apache is already the newest version (1.10.1-1).
 <img width="345" alt="Trusted_domains" src="https://user-images.githubusercontent.com/108001918/179228634-11cc87d3-8b91-4658-b005-b5e2b124e371.PNG">
 
 [&#8679;](#top) 
-
-autorisations réseau  
-postgres.conf * 0.0.0.0 
